@@ -1,0 +1,66 @@
+[project]
+name = "mlops-homework1"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "boto3>=1.42.4",
+    "clean-text>=0.6.0",
+    "fastapi>=0.118.2",
+    "gdown>=5.2.0",
+    "httpx>=0.28.1",
+    "joblib>=1.5.2",
+    "pydantic>=2.12.0",
+    "pydantic-settings>=2.11.0",
+    "pytest>=8.4.2",
+    "scikit-learn>=1.7.2",
+    "sentence-transformers>=5.1.1",
+    "torch>=2.8.0",
+    "transformers>=4.57.0",
+    "uvicorn>=0.37.0",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.3.0",
+]
+test = [
+    "pytest>=8.4.2",
+]
+inference = [
+    "clean-text>=0.6.0",
+    "joblib>=1.5.2",
+    "onnxruntime>=1.20.0",
+    "pydantic>=2.12.0",
+    "pydantic-settings>=2.11.0",
+    "scikit-learn>=1.7.2",
+    "tokenizers>=0.21.0",
+]
+deployment = [
+    "fastapi>=0.118.2",
+    "uvicorn>=0.37.0",
+]
+integration = [
+    "boto3>=1.42.4",
+    "gdown>=5.2.0",
+    "httpx>=0.28.1",
+    "sentence-transformers>=5.1.1",
+    "torch>=2.8.0",
+    "transformers>=4.57.0",
+]
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cpu" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.pytest.ini_options]
+pythonpath = [
+    "."
+]
