@@ -60,7 +60,7 @@ jobs:
         run: uv sync --group deployment
 
       - name: Prepare deployment model
-        run: uv run src/main.py
+        run: uv run python -m src.main
 
       - name: Login to ECR
         id: login-ecr
