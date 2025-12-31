@@ -19,8 +19,18 @@ jobs:
       - name: Setup uv
         uses: astral-sh/setup-uv@v7
 
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
       - name: Install dependencies
         run: uv sync --group integration --group test --group dev --group inference
+
+      - name: Prepare models for tests
+        run: uv run src/main.py
 
       - name: Run ruff check
         run: uv run ruff check .
