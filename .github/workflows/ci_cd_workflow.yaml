@@ -20,7 +20,7 @@ jobs:
         uses: astral-sh/setup-uv@v7
 
       - name: Install dependencies
-        run: uv sync --group integration --group test --group dev
+        run: uv sync --group integration --group test --group dev --group inference
 
       - name: Run ruff check
         run: uv run ruff check .
