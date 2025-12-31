@@ -1,5 +1,6 @@
 import onnxruntime as ort
 from fastapi import FastAPI
+from mangum import Mangum
 from tokenizers import Tokenizer
 
 from api.models.example import PredictRequest, PredictResponse
@@ -13,6 +14,8 @@ ort_classifier = ort.InferenceSession(settings.onnx_classifier_path)
 
 app = FastAPI()
 model = SentimentPredictor(tokenizer, ort_session, ort_classifier)
+
+handler = Mangum(app)
 
 @app.get("/health")
 def health():

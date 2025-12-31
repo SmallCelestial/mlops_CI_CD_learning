@@ -5,7 +5,7 @@ WORKDIR /app
 # Install dependencies
 COPY pyproject.toml uv.lock ./
 # Sync only inference group to .venv
-RUN uv sync --frozen --group inference  --group deployment --no-install-project
+RUN uv sync --frozen --group inference --no-install-project
 
 # Runtime stage
 FROM python:3.12-slim-bookworm
@@ -20,4 +20,6 @@ ENV PATH="/app/.venv/bin:$PATH"
 COPY . .
 
 # Run the application
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+#CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+ENTRYPOINT ["python", "-m", "awslambdaric"]
+CMD ["app.handler"]

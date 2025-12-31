@@ -22,10 +22,23 @@ inference = [
     "pydantic-settings>=2.11.0",
     "scikit-learn>=1.7.2",
     "tokenizers>=0.21.0",
+    "fastapi>=0.118.2",
+    "uvicorn>=0.37.0",
+    "awslambdaric>=3.1.1",
+    "mangum>=0.20.0",
 ]
 deployment = [
     "fastapi>=0.118.2",
     "uvicorn>=0.37.0",
+    "boto3>=1.42.4",
+    "skl2onnx>=1.19.1",
+    "torch>=2.8.0",
+    "transformers>=4.57.0",
+    "onnxruntime>=1.20.0",
+    "tokenizers>=0.21.0",
+    "pydantic-settings>=2.11.0",
+    "awslambdaric>=3.1.1",
+    "mangum>=0.20.0",
 ]
 integration = [
     "boto3>=1.42.4",
