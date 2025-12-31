@@ -14,8 +14,8 @@ Resources:
       PackageType: Image
       ImageUri: !Ref ImageUri
       Role: !Ref LambdaExecutionRoleArn
-      MemorySize: 512
-      Timeout: 30
+      MemorySize: 1024
+      Timeout: 60
       Events:
         Api:
           Type: HttpApi
