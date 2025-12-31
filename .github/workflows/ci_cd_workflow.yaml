@@ -31,7 +31,7 @@ jobs:
         run: uv sync --group integration --group test --group dev --group inference
 
       - name: Prepare models for tests
-        run: uv run src/main.py
+        run: uv run python -m src.main
 
       - name: Run ruff check
         run: uv run ruff check .
