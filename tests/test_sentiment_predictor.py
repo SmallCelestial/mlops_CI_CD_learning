@@ -1,5 +1,8 @@
 import pytest
 
+import onnxruntime as ort
+from tokenizers import Tokenizer
+
 from src.sentiment_predictor import SentimentPredictor
 from src.scripts.settings import Settings
 
@@ -8,9 +11,10 @@ settings = Settings()
 
 @pytest.fixture
 def model():
-    return SentimentPredictor(
-        settings.transformer_model_path, settings.classifier_model_path
-    )
+    tokenizer = Tokenizer.from_file(settings.onnx_tokenizer_path)
+    ort_session = ort.InferenceSession(settings.onnx_embedding_model_path)
+    ort_classifier = ort.InferenceSession(settings.onnx_classifier_path)
+    return SentimentPredictor(tokenizer, ort_session, ort_classifier)
 
 
 def test_predict_raise_error_if_input_text_is_empty(model):
