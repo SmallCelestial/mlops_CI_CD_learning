@@ -3,7 +3,7 @@ from pathlib import Path
 
 import boto3
 
-from settings import Settings
+from src.scripts.settings import Settings
 
 
 def download_artifacts(settings: Settings):
