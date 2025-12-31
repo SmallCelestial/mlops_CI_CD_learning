@@ -1,7 +1,7 @@
 import pytest
 
 from src.sentiment_predictor import SentimentPredictor
-from src.settings import Settings
+from src.scripts.settings import Settings
 
 settings = Settings()
 

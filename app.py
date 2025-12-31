@@ -1,15 +1,22 @@
+import onnxruntime as ort
 from fastapi import FastAPI
+from tokenizers import Tokenizer
 
 from api.models.example import PredictRequest, PredictResponse
+from src.scripts.settings import Settings
 from src.sentiment_predictor import SentimentPredictor
-from src.settings import Settings
 
 settings = Settings()
-app = FastAPI()
-model = SentimentPredictor(
-    settings.transformer_model_path, settings.classifier_model_path
-)
+tokenizer = Tokenizer.from_file(settings.onnx_tokenizer_path)
+ort_session = ort.InferenceSession(settings.onnx_embedding_model_path)
+ort_classifier = ort.InferenceSession(settings.onnx_classifier_path)
 
+app = FastAPI()
+model = SentimentPredictor(tokenizer, ort_session, ort_classifier)
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 @app.post("/predict")
 def predict(request: PredictRequest) -> PredictResponse:

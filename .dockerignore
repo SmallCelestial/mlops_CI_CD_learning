@@ -1,0 +1,33 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Project specific
+artifacts/
+tests/
+test.http
+readme.md
+LICENSE
+hello_world_ss.png
+Dockerfile
+Dockerfile.dev
+docker-compose.yaml
+
