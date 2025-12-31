@@ -33,7 +33,7 @@ def test_predict_return_negative_if_input_text_is_negative(model):
 
 
 def test_predict_return_neutral_if_input_text_is_neutral(model):
-    assert model.predict("This is movie") == "neutral"
+    assert model.predict("The movie is 90 minutes long.") == "neutral"
 
 
 def test_predict_return_positive_if_input_text_is_positive(model):
