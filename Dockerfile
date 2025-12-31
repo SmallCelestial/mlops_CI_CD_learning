@@ -4,8 +4,8 @@ WORKDIR /app
 
 # Install dependencies
 COPY pyproject.toml uv.lock ./
-# Sync only inference group to .venv
-RUN uv sync --frozen --group inference --no-install-project
+# Sync deployment group to .venv
+RUN uv sync --frozen --group deployment --no-install-project --no-dev
 
 # Runtime stage
 FROM python:3.12-slim-bookworm
